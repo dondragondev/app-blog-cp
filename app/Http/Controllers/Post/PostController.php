@@ -1,7 +1,8 @@
 <?php
 
-namespace App\Http\Controllers;
+namespace App\Http\Controllers\Post;
 
+use App\Http\Controllers\Controller;
 use App\Models\Catagory;
 use App\Models\Post;
 use App\Models\User;
@@ -20,7 +21,7 @@ class PostController extends Controller
       $author = User::firstWhere('username', request(['author']));
       $title = " By  " . $author->name;
     }
-    return view("posts", [
+    return view("post.posts", [
       "title" => "All Posts" . $title,
       "active" => "posts",
       "posts" => $posts
@@ -29,10 +30,19 @@ class PostController extends Controller
 
   public function show(Post $post)
   {
-    return view('post', [
+    return view('post.post', [
       "title" => "Single Post",
       "active" => "posts",
       "post" => $post
+    ]);
+  }
+
+  public function catagories()
+  {
+    return view("post.catagories", [
+      "title" => "Post Catagory",
+      "active" => "catagory",
+      "catagories" => Catagory::all()
     ]);
   }
 }
