@@ -3,7 +3,6 @@
 use App\Http\Controllers\ProfileController;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\Post\PostController;
-use App\Models\Catagory;
 
 Route::get('/', function () {
   return view("home", [
@@ -22,13 +21,13 @@ Route::get("/about", function () {
   ]);
 });
 
-Route::view('dashboard', 'dashboard')
+Route::view('dashboard.', 'dashboard.dashboard')
   ->middleware(['auth', 'verified', 'normal'])
   ->name('dashboard');
-Route::view('admin', 'admin')
+Route::view('admin', 'dashboard.admin')
   ->middleware(['auth', 'verified', 'admin'])
   ->name('admin');
-Route::view('superadmin', 'superadmin')
+Route::view('superadmin', 'dashboard.superadmin')
   ->middleware(['auth', 'verified', 'superadmin'])
   ->name('superadmin');
 
@@ -37,9 +36,6 @@ Route::middleware('auth')->group(function () {
   Route::patch('/profile', [ProfileController::class, 'update'])->name('profile.update');
   Route::delete('/profile', [ProfileController::class, 'destroy'])->name('profile.destroy');
 });
-
-
-
 
 //post catagories
 Route::get("/posts", [PostController::class, 'index']);

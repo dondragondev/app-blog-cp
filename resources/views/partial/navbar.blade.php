@@ -1,4 +1,4 @@
-<nav class="navbar navbar-expand-lg navbar-dark bg-danger">
+<nav class="navbar navbar-expand-lg navbar-light bg-warning">
     <div class="container-fluid">
         <a class="navbar-brand" href="#">Lara Blog</a>
         <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target>
